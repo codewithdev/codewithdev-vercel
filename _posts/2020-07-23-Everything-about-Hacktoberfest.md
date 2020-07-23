@@ -10,8 +10,8 @@ categories: Post
 
 **Hi Sophos!**
 
-Once again Hacktoberfest is back with lots of Swags. :)   Yes you heard right! Hacktoberfest is back in association with   **DEV Community** and **Digital Ocean**. 
-During  this October event Everyone can Support Open-source by contributing changes, whatever you like and can earn Cool Swags like Official Hacktoberfest T-shirt and Stickers, Hoodies etc.  We invite you to contribute to Open Source Community, regardless of your experience and background. You can write code, improve documentation and design, localize their Codes or create new artwork. Any GitHub pull request counts! 
+Once again Hacktoberfest is coming back with lots of Swags and learning :) Yes you heard right! This Year Hacktoberfest is coming back in association with   **DEV Community** and **Digital Ocean**. 
+During  this full month event everyone of you can support Open-source by contributing changes, whatever you like and can get a chance to earn Cool Swags like Official Hacktoberfest T-shirt and Stickers, Hoodies etc.  We invite you to contribute to Open Source Community, regardless of your experience and background. You can write code, improve documentation and design, localize their Codes or create new artwork. Any GitHub pull request counts! 
 
 ## Are You New to Open Source ?
 
@@ -80,7 +80,6 @@ If you are stuck or have any question, see our [Hacktoberfest FAQ](https://hackt
 #### Useful Links
 
 1. **[My GitHub Account](https://github.com/codewithdev)**
-2. **[My Telegram Channel](https://t.me/joinchat/Ihu1hhB_c5K_z7KzyrTIxQ)**
 3. **[Hacktoberfest Site](https://https://hacktoberfest.digitalocean.com/)**
 4. **[GitHub Help](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork)**
 
