@@ -1,5 +1,5 @@
 
-CodeWithDev is fully-fledged Technical Blog which is drawing your attention all the time.It is solely created by Dev Prakash Sharma. He is Web Developer, Technological Enthusiast, Ethichal Hacker and Interested in AI and ML. Formely he is persuing his Masters in Computer Science from an Indian University.He is passionate about Technology and always try to learn about new things. Through this Blog he shares his interest in Technology and Programming. You will get to learn and know many things through this blog. This Blog will offer you the following.:
+#### CodeWithdev.me Blog
 
 Free EBooks
 Technical Contents
