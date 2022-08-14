@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://codewithdev.github.io/sitemap.xml
+Sitemap: https://https://codewithdev.vercel.app/sitemap.xml

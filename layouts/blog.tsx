@@ -55,7 +55,7 @@ export default function BlogLayout({
           <div className="text-sm text-gray-700 dark:text-gray-300">
             <a
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
-                `https://codewithdev.github.io/blog/${post.slug}`
+                `https://codewithdev.vercel.app/blog/${post.slug}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"

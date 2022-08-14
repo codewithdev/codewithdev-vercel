@@ -5,15 +5,15 @@ import { indexQuery } from 'lib/queries';
 export async function getServerSideProps({ res }) {
   const feed = new RSS({
     title: 'Dev Prakash Sharma',
-    site_url: 'https://codewithdev.github.io',
-    feed_url: 'https://codewithdev.github.io/feed.xml'
+    site_url: 'https://codewithdev.vercel.app',
+    feed_url: 'https://codewithdev.vercel.app/feed.xml'
   });
 
   const allPosts = await sanityClient.fetch(indexQuery);
   allPosts.map((post) => {
     feed.item({
       title: post.title,
-      url: `https://codewithdev.github.io/blog/${post.slug}`,
+      url: `https://codewithdev.vercel.app/blog/${post.slug}`,
       date: post.date,
       description: post.excerpt
     });

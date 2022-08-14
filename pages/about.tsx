@@ -23,8 +23,8 @@ export default function About() {
             </li>
             <li>
               Website:{' '}
-              <Link href="https://codewithdev.github.io">
-                <a>https://codewithdev.github.io</a>
+              <Link href="https://codewithdev.vercel.app">
+                <a>https://codewithdev.vercel.app</a>
               </Link>
             </li>
             <li>

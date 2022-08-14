@@ -7,7 +7,7 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
           .map((slug) => {
             return `
                 <url>
-                    <loc>${`https://codewithdev.github.io/${slug}`}</loc>
+                    <loc>${`https://codewithdev.vercel.app/${slug}`}</loc>
                 </url>
             `;
           })
