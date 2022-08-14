@@ -1,5 +1,7 @@
-_site
-.sass-cache
-.jekyll-metadata
-.editorconfig
-*.DS_Store
+*.log
+.DS_Store
+.next
+node_modules
+.vercel
+.env
+.sanity
