@@ -4,7 +4,7 @@ import { markdownSchema } from 'sanity-plugin-markdown';
 
 export default createConfig({
   name: 'default',
-  title: 'portfolio-blognpm fun',
+  title: 'portfolio-blog',
   projectId: 'hyxkyhqk',
   dataset: 'production',
   plugins: [deskTool(), markdownSchema()],
