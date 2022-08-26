@@ -1,5 +1,10 @@
-# codewithdev.github.io
+# Portfolio Blog V2
 
+Inspired from https://leerob.io/
+
+### Building Blocks
+
+To build a site similar to this, consider changing the LICENSE file first. The following frameworks/tools are used to build this site:
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Database**: [PlanetScale](https://planetscale.com)
 - **ORM**: [Prisma](https://prisma.io/)
@@ -8,7 +13,7 @@
 - **CMS**: [Sanity](https://www.sanity.io/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 
-## Overview
+## File Structure Overview
 
 - `layouts/*` - The different page layouts each MDX category (blog, snippets) uses.
 - `lib/*` - Short for "library", a collection of helpful utilities or code for external services.
@@ -22,16 +27,22 @@
 - `public/*` - Static assets including fonts and images.
 - `styles/*` - A small amount of global styles. I'm mostly using vanilla Tailwind CSS.
 
-## Running Locally
+## Local setup
 
 This application requires Node.js v16.13+.
 
 ```bash
-$ git clone https://github.com/leerob/leerob.io.git
-$ cd codewithdev.github.io
+$ git clone https://github.com/codewithdev/codewithdev-vercel.git
+$ cd codewithdev-vercel
 $ yarn
 $ yarn dev
 ```
+
+You will see the local build running on http://localhost:3000/
+
+### Before you run local build
+- Create `.env` file and populate the API key and secrets used to successfully run the local build.
+
 
 
 ## Cloning / Forking
