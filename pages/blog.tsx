@@ -18,16 +18,16 @@ export default function Blog({
   return (
     <Container
       title="Blog – Dev Prakash Sharma"
-      description="Stuffs that I write about technology, programming, and my personal life."
+      description="I write articles, tutorials, and content based on technology and my personal life."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           Blog
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          {`I've been writing since 2018, mostly about technology and my tech careers.
+          {`I explore and write about technology that are changing the world. Here, you can find articles, tutorials, and content that help you to learn and grow.
             I have written ${posts.length} articles on my blog.
-            Use the search below to filter the articles by title.`}
+            Use the search bar below to filter the articles by title.`}
         </p>
         <div className="relative w-full mb-4">
           <input

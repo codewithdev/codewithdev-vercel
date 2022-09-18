@@ -40,7 +40,7 @@ export default function Container(props) {
   const meta = {
     title: 'Dev Prakash Sharma – Writer & Developer',
     description: `Technical Writer, Open Source Developer, and AI Enthusiast.`,
-    image: 'https://leerob.io/static/images/lee-banner.png',
+    image: 'https://leerob.io/static/images/dev-banner.png',
     type: 'website',
     ...customMeta
   };

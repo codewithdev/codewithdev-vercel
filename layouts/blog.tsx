@@ -64,7 +64,7 @@ export default function BlogLayout({
             </a>
             {` • `}
             <a
-              href="https://github.com/codewithdev/codewithdev.github.io/issues"
+              href="https://github.com/codewithdev/codewithdev.vercel.app/issues"
               target="_blank"
               rel="noopener noreferrer"
             >

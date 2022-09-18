@@ -18,9 +18,8 @@ export default function Home() {
                 Dev Prakash Sharma
               </h1>
               <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-               Technical Writer and Developer Community at {' '}
-                <span className="font-semibold striked purple ">Chargebee</span>
-              </h2>
+               An Open Source developer with passion to code, write and build stuffs.</h2>
+              <h3 className='text-gray-700 dark:text-gray-200'></h3>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
                 Helping Developers and Businesses to ship better software documentation. Contributing to Open Source, Data Science/ML Enthusiast, and building communities.
               </p>
@@ -46,7 +45,6 @@ export default function Home() {
               title="What is Technical Writing? How important it is for software and IT industries?"
               slug="technical-writing-in-software-companies"
               gradient="from-[#F9C823] to-[#FC506E]"
-              
             />
           </div>
           <Link href="/blog">
