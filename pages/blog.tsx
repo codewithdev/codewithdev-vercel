@@ -58,7 +58,7 @@ export default function Blog({
               Most Popular
             </h3>
             <BlogPost
-              title="What is Technical Writing? How important it is for software and IT industries?"
+              title="Technical Writing: Modern Practice for building Software Documentation in Tech Industry"
               excerpt="Why Documentation is important for Software companies. Why this skill is highly in-demand but less competitive in software markets?"
               slug="technical-writing-in-software-companies"
             />

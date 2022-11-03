@@ -42,7 +42,7 @@ export default function Home() {
           </h3>
           <div className="flex gap-6 flex-col md:flex-row">
             <BlogPostCard
-              title="What is Technical Writing? How important it is for software and IT industries?"
+              title="Technical Writing: Modern Practice for building Software Documentation in Tech Industry"
               slug="technical-writing-in-software-companies"
               gradient="from-[#F9C823] to-[#FC506E]"
             />
