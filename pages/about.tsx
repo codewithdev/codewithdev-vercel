@@ -40,7 +40,7 @@ export default function About() {
           <h3>Brief, 3rd Person</h3>
           <p>
             Dev is a passionate Technical Writer and Open Source Developer. An educator, writer, and speaker, Dev has contributed to
-            Microsoft Docs, GitHub Docs, Circle CI, and other open source softwares and communities. He has also been part of core team of Chargebee Developer Commmunity {' '}
+            Microsoft Docs, GitHub Docs, Circle CI, and many other open source softwares and communities. He has also been part of core team of Chargebee Developer Commmunity {' '}
             <a href= "https://devbuzz.chargebee.com/"> DevBuzz Community</a>.
             He has also delivered technical talks and workshops on Open Source, Data Science, and Machine Learning.
             Dev has extensive knowledge and experience on working with SaaS, Power BI, Anlaytics, AI/ML and API focused companies. He is a product guy and delivered documentation for both user and developers.
