@@ -25,7 +25,7 @@
     "@sanity/vision": "^3.23.4",
     "@sanity/webhook": "^2.0.0",
     "@tailwindcss/typography": "0.5.3",
-    "classnames": "^2.3.1",
+    "classnames": "^2.5.1",
     "comma-number": "^2.1.0",
     "date-fns": "2.28.0",
     "googleapis": "^105.0.0",
@@ -41,6 +41,7 @@
     "query-string": "^7.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^4.x.x",
     "sanity": "^3.23.4",
     "sanity-plugin-markdown": "^3.0.1",
     "sharp": "^0.33.5",
@@ -48,10 +49,10 @@
     "swr": "1.3.0",
     "tailwindcss": "3.1.5",
     "use-delayed-render": "^0.0.7",
-    "yarn": "^1.22.22",
-    "react-icons": "^4.x.x"
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
+    "@types/classnames": "^2.3.4",
     "@types/hast": "^3.0.4",
     "@types/jest": "^29.5.14",
     "@types/mdx": "^2.0.13",

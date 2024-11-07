@@ -107,20 +107,20 @@ export default function Container({
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setShowQuickLinks(!showQuickLinks)}
-                className="flex items-center justify-between px-3 py-3 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all font-normal text-gray-600 dark:text-gray-400 text-sm"
+                className="hidden md:flex items-center justify-between px-3 py-3 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all font-normal text-gray-600 dark:text-gray-400 text-sm"
               >
                 Quick Links
                 <svg
                   className="w-4 h-4 ml-1"
                   fill="none"
                   stroke="currentColor"
-                  viewBox="0   0 24 24"
+                  viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
 
-              <div className={`${showQuickLinks ? 'flex' : 'hidden'} items-center gap-1`}>
+              <div className={`${showQuickLinks ? 'hidden md:flex' : 'hidden'} items-center gap-1`}>
                 <NavItem href="/" text="Home" />
                 <NavItem href="/about" text="About" />
                 <NavItem href="/guestbook" text="Guestbook" />

@@ -45,76 +45,75 @@ export default function MobileMenu() {
         <ul
           className={cn(
             styles.menu,
-            'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
+            'flex flex-col fixed top-16 right-0 left-0 bg-gray-100 dark:bg-gray-900 px-6 z-50 items-center py-4 space-y-4',
             isMenuRendered && styles.menuRendered
           )}
         >
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
             style={{ transitionDelay: '150ms' }}
           >
             <Link
               href="/"
-              className="flex w-auto pb-4"
+              className="flex w-auto pb-4 justify-center"
             >
               Home
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
             style={{ transitionDelay: '175ms' }}
           >
             <Link
+              href="/about"
+              className="flex w-auto pb-4 justify-center"
+            >
+              About
+            </Link>
+          </li>
+          <li
+            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            style={{ transitionDelay: '200ms' }}
+          >
+            <Link
               href="/guestbook"
-              className="flex w-auto pb-4"
+              className="flex w-auto pb-4 justify-center"
             >
               Guestbook
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '200ms' }}
+            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            style={{ transitionDelay: '225ms' }}
           >
-            <Link href="/dashboard" legacyBehavior>
-              <div className="flex w-auto pb-4">Dashboard</div>
+            <Link
+              href="/dashboard"
+              className="flex w-auto pb-4 justify-center"
+            >
+              Dashboard
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
             style={{ transitionDelay: '250ms' }}
           >
-            <Link href="/blog" legacyBehavior>
-              <div className="flex w-auto pb-4">Blog</div>
+            <Link
+              href="/blog"
+              className="flex w-auto pb-4 justify-center"
+            >
+              Blog
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
             style={{ transitionDelay: '275ms' }}
           >
-            <Link href="/snippets" legacyBehavior>
-              <div className="flex w-auto pb-4">Snippets</div>
+            <Link
+              href="/snippets"
+              className="flex w-auto pb-4 justify-center"
+            >
+              Snippets
             </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '300ms' }}
-          >
-            <Link href="/newsletter" legacyBehavior>
-              <div className="flex w-auto pb-4">Newsletter</div>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '325ms' }}
-          >
-            <Link href="/tweets" legacyBehavior>
-              <div className="flex w-auto pb-4">Tweets</div>
-            </Link>
-          </li>
-          <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '350ms' }}
-          >
           </li>
         </ul>
       )}
