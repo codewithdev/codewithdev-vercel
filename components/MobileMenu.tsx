@@ -45,72 +45,75 @@ export default function MobileMenu() {
         <ul
           className={cn(
             styles.menu,
-            'flex flex-col fixed top-16 right-0 left-0 bg-gray-100 dark:bg-gray-900 px-6 z-50 items-center py-4 space-y-4',
+            'flex flex-col fixed mx-auto inset-x-0',
+            'top-24',
+            'w-[85%] max-w-sm rounded-lg shadow-lg',
+            'px-4 py-6 space-y-6',
             isMenuRendered && styles.menuRendered
           )}
         >
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
             style={{ transitionDelay: '150ms' }}
           >
             <Link
               href="/"
-              className="flex w-auto pb-4 justify-center"
+              className="flex w-full justify-center pb-3 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               Home
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
             style={{ transitionDelay: '175ms' }}
           >
             <Link
               href="/about"
-              className="flex w-auto pb-4 justify-center"
+              className="flex w-full justify-center pb-3 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               About
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
             style={{ transitionDelay: '200ms' }}
           >
             <Link
               href="/guestbook"
-              className="flex w-auto pb-4 justify-center"
+              className="flex w-full justify-center pb-3 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               Guestbook
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
             style={{ transitionDelay: '225ms' }}
           >
             <Link
               href="/dashboard"
-              className="flex w-auto pb-4 justify-center"
+              className="flex w-full justify-center pb-3 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               Dashboard
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
             style={{ transitionDelay: '250ms' }}
           >
             <Link
               href="/blog"
-              className="flex w-auto pb-4 justify-center"
+              className="flex w-full justify-center pb-3 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               Blog
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold text-center w-full"
+            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
             style={{ transitionDelay: '275ms' }}
           >
             <Link
               href="/snippets"
-              className="flex w-auto pb-4 justify-center"
+              className="flex w-full justify-center pb-3 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
               Snippets
             </Link>

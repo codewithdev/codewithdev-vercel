@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa';
 import { FaXTwitter as FaXTwitter } from 'react-icons/fa6';
 import { LuExternalLink } from "react-icons/lu";
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 
 import Container from 'components/Container';
@@ -17,6 +17,18 @@ export default function About() {
   const { resolvedTheme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    // Set initial width
+    setWindowWidth(window.innerWidth);
+    
+    // Handle resize
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const timeline = [
     {
@@ -120,7 +132,7 @@ export default function About() {
           </div>
           <p>Technical Writer and Open Source Developer</p>
           <h3 className="mb-1">Work Experience</h3>
-          <div className="relative h-[400px] w-full">
+          <div className="relative h-[500px] md:h-[400px] w-full">
             <div className="absolute inset-0 flex items-center justify-between z-10 px-2">
               {currentIndex !== 0 && (
                 <button 
@@ -140,7 +152,7 @@ export default function About() {
               )}
             </div>
             
-            <div className="relative h-full flex justify-center items-center">
+            <div className="relative h-full flex justify-center items-center overflow-hidden">
               {[-1, 0, 1].map((offset) => {
                 const index = (currentIndex + offset + timeline.length) % timeline.length;
                 const shouldShow = !(
@@ -154,16 +166,16 @@ export default function About() {
                     initial={false}
                     animate={{
                       scale: offset === 0 ? 1 : 0.8,
-                      x: offset * 260,
+                      x: offset * (windowWidth < 768 ? 160 : 260),
                       opacity: 1 - Math.abs(offset) * 0.3,
                       zIndex: 2 - Math.abs(offset)
                     }}
                     transition={{
                       duration: 0.5
                     }}
-                    className="absolute w-[240px]"
+                    className="absolute w-[180px] md:w-[240px]"
                   >
-                    <div className={`${timeline[index].bgColor} p-4 rounded-lg shadow-sm dark:border dark:border-gray-700 transition-colors duration-300 relative overflow-hidden`}>
+                    <div className={`${timeline[index].bgColor} p-3 md:p-4 rounded-lg shadow-sm dark:border dark:border-gray-700 transition-colors duration-300 relative overflow-hidden`}>
                       <div className="flex flex-col items-start space-y-0.5">
                         <span className="text-xs text-gray-500 dark:text-gray-400">{timeline[index].period}</span>
                         <h4 className="text-base text-gray-900 dark:text-white">{timeline[index].company}</h4>
