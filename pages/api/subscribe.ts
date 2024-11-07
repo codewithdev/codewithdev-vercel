@@ -22,20 +22,47 @@ export default async function handler(req: NextRequest) {
     );
   }
 
-  const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
-    method: 'POST',
-    headers: {
-      Authorization: `Token ${process.env.REVUE_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email })
-  });
-  const data = await result.json();
+  try {
+    const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
+      method: 'POST',
+      headers: {
+        Authorization: `Token ${process.env.REVUE_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email })
+    });
+    const data = await result.json();
 
-  if (!result.ok) {
+    if (!result.ok) {
+      return new Response(
+        JSON.stringify({
+          error: data.error?.email?.[0] || 'Error subscribing to newsletter'
+        }),
+        {
+          status: 500,
+          headers: {
+            'content-type': 'application/json'
+          }
+        }
+      );
+    }
+
     return new Response(
       JSON.stringify({
-        error: data.error.email[0]
+        error: null,
+        message: 'Successfully subscribed to newsletter!'
+      }),
+      {
+        status: 201,
+        headers: {
+          'content-type': 'application/json'
+        }
+      }
+    );
+  } catch (err) {
+    return new Response(
+      JSON.stringify({
+        error: 'Error subscribing to newsletter'
       }),
       {
         status: 500,
@@ -45,16 +72,4 @@ export default async function handler(req: NextRequest) {
       }
     );
   }
-
-  return new Response(
-    JSON.stringify({
-      error: ''
-    }),
-    {
-      status: 201,
-      headers: {
-        'content-type': 'application/json'
-      }
-    }
-  );
 }

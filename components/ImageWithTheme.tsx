@@ -1,12 +1,17 @@
-import Image from 'next/future/image';
+import Image, { ImageProps } from 'next/image';
 import { useTheme } from 'next-themes';
 
-export default function ImageWithTheme(props) {
+interface ImageWithThemeProps extends Omit<ImageProps, 'src'> {
+  light: string;
+  dark: string;
+  alt: string;
+}
+
+export default function ImageWithTheme(props: ImageWithThemeProps) {
   const { theme } = useTheme();
 
   return (
     <Image
-      alt={props.alt}
       src={theme === 'light' ? props.light : props.dark}
       {...props}
     />

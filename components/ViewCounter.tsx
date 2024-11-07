@@ -4,9 +4,13 @@ import useSWR from 'swr';
 import fetcher from 'lib/fetcher';
 import { Views } from 'lib/types';
 
-export default function ViewCounter({ slug }) {
+interface ViewCounterProps {
+  slug: string;
+}
+
+export default function ViewCounter({ slug }: ViewCounterProps) {
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
-  const views = new Number(data?.total);
+  const views = Number(data?.total);
 
   useEffect(() => {
     const registerView = () =>

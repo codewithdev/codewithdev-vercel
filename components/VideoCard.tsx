@@ -1,4 +1,11 @@
-export default function VideoCard({ href, length, title, index }) {
+interface VideoCardProps {
+  href: string;
+  length: string;
+  title: string;
+  index: number;
+}
+
+export default function VideoCard({ href, length, title, index }: VideoCardProps) {
   return (
     <a
       className="w-full"

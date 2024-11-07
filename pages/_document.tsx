@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import { DocumentProps } from 'next/document';
 
-export default function Document(props) {
+export default function Document(props: DocumentProps) {
   return (
     <Html lang="en">
       <Head>
@@ -51,7 +52,7 @@ export default function Document(props) {
           name="robots"
         />
       </Head>
-      <body className="bg-white dark:bg-black text-white dark:text-black">
+      <body className="bg-white dark:bg-black text-black dark:text-white">
         <Main />
         <NextScript />
       </body>

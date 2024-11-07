@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // This isn't working yet - not sure why
-  if (!isValidRequest(req, process.env.SANITY_STUDIO_REVALIDATE_SECRET)) {
+  if (!isValidRequest(req, process.env.SANITY_STUDIO_REVALIDATE_SECRET || '')) {
     return res.status(401).json({ message: 'Invalid request' });
   }
 
@@ -24,7 +24,7 @@ export default async function handler(
       res.revalidate(`/blog/${slug}`)
     ]);
     return res.status(200).json({ message: `Updated ${slug}` });
-  } catch (err) {
+  } catch (err: any) {
     return res.status(500).json({ message: err.message });
   }
 }

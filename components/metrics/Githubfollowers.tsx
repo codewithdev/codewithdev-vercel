@@ -7,7 +7,7 @@ import MetricCard from 'components/metrics/Card';
 export default function GitHubCardf() {
   const { data } = useSWR<GitHubFollowers>('/api/github', fetcher);
 
-  const followers = new Number(data?.followers);
+  const followers = Number(data?.followers);
   const link = 'https://github.com/codewithdev?tab=followers';
 
   return (

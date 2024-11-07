@@ -2,7 +2,21 @@ import prisma from 'lib/prisma';
 import Container from 'components/Container';
 import Guestbook from 'components/Guestbook';
 
-export default function GuestbookPage({ fallbackData }) {
+interface GuestbookEntry {
+  id: string;
+  body: string;
+  created_by: string;
+  updated_at: string;
+}
+
+interface GuestbookDbEntry {
+  id: number;
+  body: string;
+  created_by: string;
+  updated_at: Date;
+}
+
+export default function GuestbookPage({ fallbackData }: { fallbackData: GuestbookEntry[] }) {
   return (
     <Container
       title="Guestbook – Dev Prakash Sharma"
@@ -23,13 +37,13 @@ export default function GuestbookPage({ fallbackData }) {
 }
 
 export async function getStaticProps() {
-  const entries = await prisma.codewithdevPortfolio.findMany({
+  const entries = await prisma.portfolio.findMany({
     orderBy: {
       updated_at: 'desc'
     }
-  });
+  }) as GuestbookDbEntry[];
 
-  const fallbackData = entries.map((entry) => ({
+  const fallbackData = entries.map((entry: GuestbookDbEntry) => ({
     id: entry.id.toString(),
     body: entry.body,
     created_by: entry.created_by.toString(),

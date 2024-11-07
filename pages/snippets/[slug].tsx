@@ -5,6 +5,7 @@ import { snippetsQuery, snippetSlugsQuery } from 'lib/queries';
 import { sanityClient, getClient } from 'lib/sanity-server';
 import { mdxToHtml } from 'lib/mdx';
 import { Snippet } from 'lib/types';
+import { serialize } from 'next-mdx-remote/serialize';
 
 export default function SnippetsPage({ snippet }: { snippet: Snippet }) {
   return (
@@ -17,13 +18,20 @@ export default function SnippetsPage({ snippet }: { snippet: Snippet }) {
 export async function getStaticPaths() {
   const paths = await sanityClient.fetch(snippetSlugsQuery);
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: 'blocking'
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const { snippet } = await getClient(preview).fetch(snippetsQuery, {
+export async function getStaticProps({ 
+  params,
+  preview = false 
+}: {
+  params: { slug: string };
+  preview?: boolean;
+}) {
+  const client = await getClient(preview);
+  const { snippet } = await client.fetch(snippetsQuery, {
     slug: params.slug
   });
 
@@ -31,13 +39,13 @@ export async function getStaticProps({ params, preview = false }) {
     return { notFound: true };
   }
 
-  const { html } = await mdxToHtml(snippet.content);
+  const mdxSource = await serialize(snippet.content);
 
   return {
     props: {
       snippet: {
         ...snippet,
-        content: html
+        content: mdxSource
       }
     }
   };

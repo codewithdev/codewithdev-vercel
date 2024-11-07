@@ -1,16 +1,18 @@
 import RSS from 'rss';
 import { sanityClient } from 'lib/sanity-server';
 import { indexQuery } from 'lib/queries';
+import { GetServerSideProps } from 'next';
+import { Post } from 'lib/types';
 
-export async function getServerSideProps({ res }) {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const feed = new RSS({
     title: 'Dev Prakash Sharma',
     site_url: 'https://codewithdev.vercel.app',
     feed_url: 'https://codewithdev.vercel.app/feed.xml'
   });
 
-  const allPosts = await sanityClient.fetch(indexQuery);
-  allPosts.map((post) => {
+  const allPosts = await sanityClient.fetch<Post[]>(indexQuery);
+  allPosts.forEach((post: Post) => {
     feed.item({
       title: post.title,
       url: `https://codewithdev.vercel.app/blog/${post.slug}`,
@@ -30,7 +32,7 @@ export async function getServerSideProps({ res }) {
   return {
     props: {}
   };
-}
+};
 
 export default function RSSFeed() {
   return null;

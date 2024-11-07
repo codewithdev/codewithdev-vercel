@@ -13,10 +13,10 @@ export default function NotFound() {
           It seems like you've found something that doesn't exist, or you've spelled something
           wrong. I'm guessing you spelled something wrong. If you're looking for something click <strong>Return Home.</strong>
         </p>
-        <Link href="/">
-          <a className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white">
+        <Link href="/" legacyBehavior>
+          <div className="p-1 sm:p-4 w-64 font-bold mx-auto bg-gray-200 dark:bg-gray-800 text-center rounded-md text-black dark:text-white">
             Return Home
-          </a>
+          </div>
         </Link>
       </div>
     </Container>

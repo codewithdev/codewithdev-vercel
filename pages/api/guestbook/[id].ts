@@ -8,14 +8,26 @@ export default async function handler(
 ) {
   const session = await getSession({ req });
 
-  const { id } = req.query;
-  const { email } = session.user;
+  if (!session) {
+    return res.status(403).send('Unauthorized');
+  }
 
-  const entry = await prisma.codewithdevPortfolio.findUnique({
+  const { id } = req.query;
+  const email = session.user?.email;
+
+  if (!email) {
+    return res.status(403).send('Unauthorized');
+  }
+
+  const entry = await prisma.portfolio.findUnique({
     where: {
       id: Number(id)
     }
   });
+
+  if (!entry) {
+    return res.status(404).send('Entry not found');
+  }
 
   if (req.method === 'GET') {
     return res.json({
@@ -26,12 +38,12 @@ export default async function handler(
     });
   }
 
-  if (!session || email !== entry.email) {
+  if (email !== entry.email) {
     return res.status(403).send('Unauthorized');
   }
 
   if (req.method === 'DELETE') {
-    await prisma.codewithdevPortfolio.delete({
+    await prisma.portfolio.delete({
       where: {
         id: Number(id)
       }
@@ -43,7 +55,7 @@ export default async function handler(
   if (req.method === 'PUT') {
     const body = (req.body.body || '').slice(0, 500);
 
-    await prisma.codewithdevPortfolio.update({
+    const updatedEntry = await prisma.portfolio.update({
       where: {
         id: Number(id)
       },
@@ -54,7 +66,7 @@ export default async function handler(
     });
 
     return res.status(201).json({
-      ...entry,
+      ...updatedEntry,
       body
     });
   }

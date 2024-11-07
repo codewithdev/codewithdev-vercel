@@ -6,13 +6,17 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
+    if (!req.query.slug) {
+      return res.status(400).json({ message: 'Slug is required' });
+    }
     const slug = req.query.slug.toString();
 
     if (req.method === 'POST') {
       const newOrUpdatedViews = await prisma.views.upsert({
         where: { slug },
         create: {
-          slug
+          slug,
+          count: 1
         },
         update: {
           count: {
@@ -33,9 +37,14 @@ export default async function handler(
         }
       });
 
+      if (!views) {
+        return res.status(200).json({ total: '0' });
+      }
+
       return res.status(200).json({ total: views.count.toString() });
     }
   } catch (e) {
-    return res.status(500).json({ message: e.message });
+    console.error(e);
+    return res.status(500).json({ message: e instanceof Error ? e.message : 'An error occurred' });
   }
 }

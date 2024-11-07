@@ -7,14 +7,14 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'GET') {
-    const entries = await prisma.codewithdevPortfolio.findMany({
+    const entries = await prisma.portfolio.findMany({
       orderBy: {
         updated_at: 'desc'
       }
     });
 
     return res.json(
-      entries.map((entry) => ({
+      entries.map((entry: { id: number; body: string; created_by: string; updated_at: Date }) => ({
         id: entry.id.toString(),
         body: entry.body,
         created_by: entry.created_by,
@@ -24,14 +24,20 @@ export default async function handler(
   }
 
   const session = await getSession({ req });
-  const { email, name } = session.user;
 
   if (!session) {
     return res.status(403).send('Unauthorized');
   }
 
+  const email = session.user?.email;
+  const name = session.user?.name;
+
+  if (!email || !name) {
+    return res.status(403).send('Unauthorized');
+  }
+
   if (req.method === 'POST') {
-    const newEntry = await prisma.codewithdevPortfolio.create({
+    const newEntry = await prisma.portfolio.create({
       data: {
         email,
         body: (req.body.body || '').slice(0, 500),

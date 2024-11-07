@@ -8,10 +8,29 @@ import { Form, FormState } from 'lib/types';
 import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
 import LoadingSpinner from 'components/LoadingSpinner';
+import { Session } from 'next-auth';
 
-function GuestbookEntry({ entry, user }) {
+interface User {
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+}
+
+interface Entry {
+  id: string;
+  body: string;
+  created_by: string;
+  updated_at: string;
+}
+
+interface GuestbookEntryProps {
+  entry: Entry;
+  user: User | null | undefined;
+}
+
+function GuestbookEntry({ entry, user }: GuestbookEntryProps) {
   const { mutate } = useSWRConfig();
-  const deleteEntry = async (e) => {
+  const deleteEntry = async (e: React.MouseEvent) => {
     e.preventDefault();
 
     await fetch(`/api/guestbook/${entry.id}`, {
@@ -30,7 +49,7 @@ function GuestbookEntry({ entry, user }) {
         <p className="text-sm text-gray-400 dark:text-gray-600">
           {format(new Date(entry.updated_at), "d MMM yyyy 'at' h:mm bb")}
         </p>
-        {user && entry.created_by === user.name && (
+        {user && user.name && entry.created_by === user.name && (
           <>
             <span className="text-gray-200 dark:text-gray-800">/</span>
             <button
@@ -46,18 +65,24 @@ function GuestbookEntry({ entry, user }) {
   );
 }
 
-export default function Guestbook({ fallbackData }) {
+interface GuestbookProps {
+  fallbackData: Entry[];
+}
+
+export default function Guestbook({ fallbackData }: GuestbookProps) {
   const { data: session } = useSession();
   const { mutate } = useSWRConfig();
   const [form, setForm] = useState<FormState>({ state: Form.Initial });
-  const inputEl = useRef(null);
-  const { data: entries } = useSWR('/api/guestbook', fetcher, {
+  const inputEl = useRef<HTMLInputElement>(null);
+  const { data: entries } = useSWR<Entry[]>('/api/guestbook', fetcher, {
     fallbackData
   });
 
-  const leaveEntry = async (e) => {
+  const leaveEntry = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setForm({ state: Form.Loading });
+
+    if (!inputEl.current) return;
 
     const res = await fetch('/api/guestbook', {
       body: JSON.stringify({
@@ -120,7 +145,7 @@ export default function Guestbook({ fallbackData }) {
               className="flex items-center justify-center absolute right-1 top-1 px-4 pt-1 font-medium h-8 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
               type="submit"
             >
-              {form.state === Form.Loading ? <LoadingSpinner /> : 'Sign In'}
+              {form.state === Form.Loading ? <LoadingSpinner /> : 'Submit'}
             </button>
           </form>
         )}

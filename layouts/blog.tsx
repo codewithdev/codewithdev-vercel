@@ -1,4 +1,5 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
+import Link from 'next/link';
 import { parseISO, format } from 'date-fns';
 import { PropsWithChildren, Suspense } from 'react';
 
@@ -16,7 +17,7 @@ export default function BlogLayout({
     <Container
       title={`${post.title} – Dev Prakash Sharma`}
       description={post.excerpt}
-      image={urlForImage(post.coverImage).url()}
+      image={urlForImage(post.coverImage)?.url()}
       date={new Date(post.date).toISOString()}
       type="article"
     >
@@ -35,7 +36,7 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              {'Dev Praksh Sh / '}
+              {'Dev Prakash Sharma / '}
               {format(parseISO(post.date), 'MMMM dd, yyyy')}
             </p>
           </div>
@@ -53,23 +54,25 @@ export default function BlogLayout({
             <Subscribe />
           </div>
           <div className="text-sm text-gray-700 dark:text-gray-300">
-            <a
+            <Link
               href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
                 `https://codewithdev.vercel.app/blog/${post.slug}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-gray-900 dark:hover:text-gray-100 transition"
             >
               {'Discuss on Twitter'}
-            </a>
+            </Link>
             {` • `}
-            <a
+            <Link
               href="https://github.com/codewithdev/codewithdev.vercel.app/issues"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:text-gray-900 dark:hover:text-gray-100 transition"
             >
               {'Suggest Change'}
-            </a>
+            </Link>
           </div>
         </Suspense>
       </article>

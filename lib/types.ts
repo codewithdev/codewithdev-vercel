@@ -1,5 +1,5 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { Image } from 'sanity';
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
 export type Post = {
   _id: string;
@@ -12,14 +12,21 @@ export type Post = {
   readingTime: string;
   tweets: any[];
 };
+type AlbumArt = {
+  src: string; 
+  alt?: string; 
+};
 
 export type Snippet = {
-  _id: string;
-  slug: string;
-  content: MDXRemoteSerializeResult;
   title: string;
+  slug: string;
+  logo: {
+    asset: {
+      _ref: string;
+    };
+  };
   description: string;
-  logo: string;
+  content: MDXRemoteSerializeResult;
 };
 
 export enum Form {
@@ -55,14 +62,20 @@ export type NowPlayingSong = {
   isPlaying: boolean;
   songUrl: string;
   title: string;
-  albumArt: Image;
+  albumArt: SanityImageObject;
 };
 
 export type TopTracks = {
-  tracks: Song[];
-  items: number;
+  songUrl: string;
+  title: string;
+  albumArt: AlbumArt;
 };
 
+export type Track = {
+  title: string;
+  artist: string;
+  songUrl: string;
+};
 
 export type GitHub = {
   stars: number;

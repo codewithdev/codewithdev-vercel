@@ -2,6 +2,47 @@ import Image from 'next/image';
 import { format } from 'date-fns';
 import comma from 'comma-number';
 
+interface Author {
+  username: string;
+  name: string;
+  profile_image_url: string;
+  verified?: boolean;
+}
+
+interface Media {
+  media_key: string;
+  height: number;
+  width: number;
+  url: string;
+}
+
+interface PublicMetrics {
+  reply_count: number;
+  retweet_count: number;
+  like_count: number;
+}
+
+interface ReferencedTweet {
+  type: string;
+  text: string;
+  id: string;
+  author: Author;
+  created_at: string;
+  public_metrics: PublicMetrics;
+  media?: Media[];
+  referenced_tweets?: ReferencedTweet[];
+}
+
+interface TweetProps {
+  text: string;
+  id: string;
+  author: Author;
+  media?: Media[];
+  created_at: string;
+  public_metrics: PublicMetrics;
+  referenced_tweets?: ReferencedTweet[];
+}
+
 /**
  * Supports plain text, images, quote tweets.
  *
@@ -15,7 +56,7 @@ export default function Tweet({
   created_at,
   public_metrics,
   referenced_tweets
-}) {
+}: TweetProps) {
   const authorUrl = `https://twitter.com/${author.username}`;
   const likeUrl = `https://twitter.com/intent/like?tweet_id=${id}`;
   const retweetUrl = `https://twitter.com/intent/retweet?tweet_id=${id}`;

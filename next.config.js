@@ -1,7 +1,7 @@
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = {
+const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   images: {
@@ -11,14 +11,6 @@ module.exports = {
       'cdn.sanity.io'
     ]
   },
-  react: {
-    useSuspense: false
-},
-  experimental: {
-    legacyBrowsers: false,
-    browsersListForSwc: true,
-    images: { allowFutureImage: true }
-  },
   async headers() {
     return [
       {
@@ -26,8 +18,14 @@ module.exports = {
         headers: securityHeaders
       }
     ];
-  }
+  },
+  env: {
+    NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  },
 };
+
+module.exports = nextConfig;
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `

@@ -1,4 +1,4 @@
-export const getTweets = async (ids) => {
+export const getTweets = async (ids: string[]) => {
   if (ids.length === 0) {
     return [];
   }
@@ -25,15 +25,49 @@ export const getTweets = async (ids) => {
 
   const tweets = await response.json();
 
-  const getAuthorInfo = (author_id) => {
-    return tweets.includes.users.find((user) => user.id === author_id);
+  interface User {
+    id: string;
+    name: string;
+    profile_image_url: string;
+    protected: boolean;
+    url: string;
+    username: string;
+    verified: boolean;
+  }
+
+  interface Tweet {
+    id: string;
+    text: string;
+    author_id: string;
+    attachments?: {
+      media_keys: string[];
+    };
+    referenced_tweets?: {
+      type: string;
+      id: string;
+    }[];
+  }
+
+  interface Media {
+    media_key: string;
+    type: string;
+    url: string;
+    width: number;
+    height: number;
+    duration_ms?: number;
+    preview_image_url?: string;
+    public_metrics?: Record<string, number>;
+  }
+
+  const getAuthorInfo = (author_id: string): User | undefined => {
+    return tweets.includes.users.find((user: User) => user.id === author_id);
   };
 
-  const getReferencedTweets = (mainTweet) => {
+  const getReferencedTweets = (mainTweet: Tweet) => {
     return (
       mainTweet?.referenced_tweets?.map((referencedTweet) => {
         const fullReferencedTweet = tweets.includes.tweets.find(
-          (tweet) => tweet.id === referencedTweet.id
+          (tweet: Tweet) => tweet.id === referencedTweet.id
         );
 
         return {
@@ -46,12 +80,12 @@ export const getTweets = async (ids) => {
   };
 
   return (
-    tweets.data.reduce((allTweets, tweet) => {
+    tweets.data.reduce((allTweets: Tweet[], tweet: Tweet) => {
       const tweetWithAuthor = {
         ...tweet,
         media:
-          tweet?.attachments?.media_keys.map((key) =>
-            tweets.includes.media.find((media) => media.media_key === key)
+          tweet?.attachments?.media_keys.map((key: string) =>
+            tweets.includes.media.find((media: Media) => media.media_key === key)
           ) || [],
         referenced_tweets: getReferencedTweets(tweet),
         author: getAuthorInfo(tweet.author_id)

@@ -9,7 +9,7 @@ import { mdxToHtml } from 'lib/mdx';
 import { Post } from 'lib/types';
 
 export default function PostPage({ post }: { post: Post }) {
-  const StaticTweet = ({ id }) => {
+  const StaticTweet = ({ id }: { id: string }) => {
     const tweet = post.tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;
   };
@@ -18,12 +18,10 @@ export default function PostPage({ post }: { post: Post }) {
     <BlogLayout post={post}>
       <MDXRemote
         {...post.content}
-        components={
-          {
-            ...components,
-            StaticTweet
-          } as any
-        }
+        components={{
+          ...components,
+          StaticTweet
+        }}
       />
     </BlogLayout>
   );
@@ -32,13 +30,20 @@ export default function PostPage({ post }: { post: Post }) {
 export async function getStaticPaths() {
   const paths = await sanityClient.fetch(postSlugsQuery);
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: 'blocking'
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const { post } = await getClient(preview).fetch(postQuery, {
+export async function getStaticProps({ 
+  params,
+  preview = false 
+}: {
+  params: { slug: string };
+  preview?: boolean;
+}) {
+  const client = await getClient(preview);
+  const { post } = await client.fetch(postQuery, {
     slug: params.slug
   });
 
@@ -47,7 +52,7 @@ export async function getStaticProps({ params, preview = false }) {
   }
 
   const { html, tweetIDs, readingTime } = await mdxToHtml(post.content);
-  const tweets = await getTweets(tweetIDs);
+  const tweets = await getTweets(tweetIDs.filter((id: string | undefined): id is string => id !== undefined));
 
   return {
     props: {

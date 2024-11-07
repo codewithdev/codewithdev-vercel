@@ -18,16 +18,16 @@ export default function Snippets({
           Code Snippets
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          These are a collection of code snippets that I've used in the past and
-          saved.
+          These are a collection of code snippets I've used in the past and saved.
+          Some are Serverless Functions, which include set up instructions.
         </p>
-        <div className="grid w-full grid-cols-1 gap-4 my-2 mt-4 sm:grid-cols-2">
+        <div className="grid w-full grid-cols-1 gap-4 my-2 mt-4">
           {snippets.map((snippet) => (
             <FunctionCard
               key={snippet.slug}
               title={snippet.title}
               slug={snippet.slug}
-              logo={snippet.logo}
+              logo={snippet.logo || { asset: { _ref: '' } }}
               description={snippet.description}
             />
           ))}
@@ -38,7 +38,8 @@ export default function Snippets({
 }
 
 export async function getStaticProps({ preview = false }) {
-  const snippets: Snippet[] = await getClient(preview).fetch(allSnippetsQuery);
+  const client = await getClient(preview);
+  const snippets: Snippet[] = await client.fetch(allSnippetsQuery);
 
   return { props: { snippets } };
 }

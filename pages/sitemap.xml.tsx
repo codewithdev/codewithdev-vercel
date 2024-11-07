@@ -1,7 +1,8 @@
 import { sanityClient } from 'lib/sanity-server';
 import { postSlugsQuery } from 'lib/queries';
+import { GetServerSideProps } from 'next';
 
-const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
+const createSitemap = (slugs: string[]) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${slugs
           .map((slug) => {
@@ -14,10 +15,11 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
           .join('')}
     </urlset>
 `;
-export async function getServerSideProps({ res }) {
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const allPosts = await sanityClient.fetch(postSlugsQuery);
   const allPages = [
-    ...allPosts.map((slug) => `blog/${slug}`),
+    ...allPosts.map((slug: string) => `blog/${slug}`),
     ...[
       '',
       'about',

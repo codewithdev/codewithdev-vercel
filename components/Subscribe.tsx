@@ -10,33 +10,51 @@ import LoadingSpinner from 'components/LoadingSpinner';
 
 export default function Subscribe() {
   const [form, setForm] = useState<FormState>({ state: Form.Initial });
-  const inputEl = useRef(null);
+  const inputEl = useRef<HTMLInputElement>(null);
   const { data } = useSWR<Subscribers>('/api/subscribers', fetcher);
-  const subscriberCount = new Number(data?.count);
+  const subscriberCount = data?.count || 0;
 
-  const subscribe = async (e) => {
+  const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setForm({ state: Form.Loading });
 
-    const email = inputEl.current.value;
-    const res = await fetch(`/api/subscribe?email=${email}`, {
-      method: 'POST'
-    });
+    try {
+      const email = inputEl.current?.value;
+      if (!email) {
+        throw new Error('Email is required');
+      }
 
-    const { error } = await res.json();
-    if (error) {
+      const params = new URLSearchParams({ email });
+      const res = await fetch(`/api/subscribe?${params}`, {
+        method: 'POST'
+      });
+
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const { error } = await res.json();
+      if (error) {
+        setForm({
+          state: Form.Error,
+          message: error
+        });
+        return;
+      }
+
+      if (inputEl.current) {
+        inputEl.current.value = '';
+      }
+      setForm({
+        state: Form.Success,
+        message: `Congratulations! You are now subscribed to the newsletter.`
+      });
+    } catch (error) {
       setForm({
         state: Form.Error,
-        message: error
+        message: error instanceof Error ? error.message : 'Something went wrong'
       });
-      return;
     }
-
-    inputEl.current.value = '';
-    setForm({
-      state: Form.Success,
-      message: `Congratulations! You are now subscribed to the newsletter.`
-    });
   };
 
   return (
