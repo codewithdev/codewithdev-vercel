@@ -214,8 +214,7 @@ export default function About() {
           </p>
           <h3>Education</h3>
           <p>
-            Dev is graduated from Dr. APJ Kalam Technical University with a Masters Degree (MCA) in
-            Computer Science and Engineering.
+            I am a computer science graduate (Masters in Computer Applications, MCA) from <Link href="https://knit.ac.in" className="text-blue-600 dark:text-blue-400 hover:underline">Kamla Nehru Institute of Technology</Link> (<Link href="https://maps.app.goo.gl/Ld4Ld6Ue5Vy4Yvxz7" className="text-blue-600 dark:text-blue-400 hover:underline">Sultanpur, Uttar Pradesh, India</Link>) from 2021 batch.
           </p>
           <h2>Headshots</h2>
           <div className="flex space-x-8">
