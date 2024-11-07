@@ -1,6 +1,4 @@
-# Portfolio Blog V2
-
-Inspired from https://leerob.io/
+# Portfolio Blog V2 (Revamped)
 
 ### Building Blocks
 
