@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import { FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa';
 import { FaXTwitter as FaXTwitter } from 'react-icons/fa6';
 import { LuExternalLink } from "react-icons/lu";
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 
@@ -106,6 +106,21 @@ export default function About() {
     });
   };
 
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const handleDragEnd = (e: any, { offset, velocity }: PanInfo) => {
+    const swipe = swipePower(offset.x, velocity.x);
+
+    if (swipe < -swipeConfidenceThreshold) {
+      paginate(1);
+    } else if (swipe > swipeConfidenceThreshold) {
+      paginate(-1);
+    }
+  };
+
   return (
     <Container title="About – Dev">
       <div className="flex flex-col justify-center items-start max-w-xl mx-auto mb-16 w-full">
@@ -173,7 +188,11 @@ export default function About() {
                     transition={{
                       duration: 0.5
                     }}
-                    className="absolute w-[180px] md:w-[240px]"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={1}
+                    onDragEnd={handleDragEnd}
+                    className="absolute w-[90vw] sm:w-full max-w-[300px]"
                   >
                     <div className={`${timeline[index].bgColor} p-3 md:p-4 rounded-lg shadow-sm dark:border dark:border-gray-700 transition-colors duration-300 relative overflow-hidden`}>
                       <div className="flex flex-col items-start space-y-0.5">
