@@ -47,14 +47,14 @@ export default function MobileMenu() {
             styles.menu,
             'flex flex-col fixed mx-auto inset-x-0',
             'top-24',
-            'w-[85%] max-w-sm rounded-lg shadow-lg',
+            'w-[85%] max-w-sm',
             'px-4 py-6 space-y-6',
-            'bg-gray-900',
+            'bg-gray-50 dark:bg-gray-900',
             isMenuRendered && styles.menuRendered
           )}
         >
           <li
-            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
+            className="text-gray-900 dark:text-white text-base font-semibold w-full text-center"
             style={{ transitionDelay: '150ms' }}
           >
             <Link
@@ -65,7 +65,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
+            className="text-gray-900 dark:text-white text-base font-semibold w-full text-center"
             style={{ transitionDelay: '175ms' }}
           >
             <Link
@@ -76,7 +76,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
+            className="text-gray-900 dark:text-white text-base font-semibold w-full text-center"
             style={{ transitionDelay: '200ms' }}
           >
             <Link
@@ -87,7 +87,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
+            className="text-gray-900 dark:text-white text-base font-semibold w-full text-center"
             style={{ transitionDelay: '225ms' }}
           >
             <Link
@@ -98,7 +98,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
+            className="text-gray-900 dark:text-white text-base font-semibold w-full text-center"
             style={{ transitionDelay: '250ms' }}
           >
             <Link
@@ -109,7 +109,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="text-gray-900 dark:text-gray-100 text-base font-semibold w-full text-center"
+            className="text-gray-900 dark:text-white text-base font-semibold w-full text-center"
             style={{ transitionDelay: '275ms' }}
           >
             <Link
