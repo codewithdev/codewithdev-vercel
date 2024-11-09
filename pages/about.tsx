@@ -7,6 +7,7 @@ import { LuExternalLink } from "react-icons/lu";
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
+import { BsStackOverflow } from "react-icons/bs";
 
 import Container from 'components/Container';
 import avatar from 'public/headshot-dev.jpg';
@@ -144,6 +145,9 @@ export default function About() {
             <Link href="https://www.linkedin.com/in/idevprakaash" className="p-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
               <FaLinkedin className="w-4 h-4 text-[#0077b5]" />
             </Link>
+            <Link href="https://stackoverflow.com/users/13662843/codewithdev" className="p-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+            <BsStackOverflow className='w-4 h-4 text-[#0077b5]'/>
+            </Link>
           </div>
           <p>Technical Writer and Open Source Developer</p>
           <h3 className="mb-1">Work Experience</h3>
@@ -180,21 +184,34 @@ export default function About() {
                     key={index}
                     initial={false}
                     animate={{
-                      scale: offset === 0 ? 1 : 0.8,
-                      x: offset * (windowWidth < 768 ? 160 : 260),
-                      opacity: 1 - Math.abs(offset) * 0.3,
-                      zIndex: 2 - Math.abs(offset)
+                      scale: offset === 0 ? 1 : 0.6,
+                      x: offset * (windowWidth < 768 ? 120 : 260),
+                      opacity: offset === 0 ? 1 : 0.15,
+                      zIndex: offset === 0 ? 2 : 0,
+                      filter: offset === 0 ? 'blur(0px)' : 'blur(4px)',
                     }}
                     transition={{
-                      duration: 0.5
+                      duration: 0.5,
+                      ease: "easeInOut"
                     }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     dragElastic={1}
                     onDragEnd={handleDragEnd}
-                    className="absolute w-[90vw] sm:w-full max-w-[300px]"
+                    className={`absolute w-[90vw] sm:w-full max-w-[300px] ${
+                      offset === 0 
+                        ? 'pointer-events-auto backdrop-blur-none' 
+                        : 'pointer-events-none backdrop-blur-sm'
+                    }`}
                   >
-                    <div className={`${timeline[index].bgColor} p-3 md:p-4 rounded-lg shadow-sm dark:border dark:border-gray-700 transition-colors duration-300 relative overflow-hidden`}>
+                    <div className={`${timeline[index].bgColor} p-3 md:p-4 rounded-lg
+                      dark:border dark:border-gray-700 transition-colors duration-300 
+                      relative overflow-hidden ${
+                        offset === 0 
+                          ? 'shadow-lg ring-1 ring-gray-900/5 dark:ring-white/10' 
+                          : 'shadow-none opacity-50'
+                      }`}
+                    >
                       <div className="flex flex-col items-start space-y-0.5">
                         <span className="text-xs text-gray-500 dark:text-gray-400">{timeline[index].period}</span>
                         <h4 className="text-base text-gray-900 dark:text-white">{timeline[index].company}</h4>
