@@ -10,23 +10,31 @@ import MobileMenu from 'components/MobileMenu';
 interface NavItemProps {
   href: string;
   text: string;
+  isActive: boolean;
 }
 
-function NavItem({ href, text }: NavItemProps) {
+function NavItem({ href, text, isActive }: NavItemProps) {
   const router = useRouter();
-  const isActive = router.asPath === href;
 
   return (
     <NextLink
       href={href}
       className={cn(
         isActive
-          ? 'font-semibold text-gray-800 dark:text-gray-200'
-          : 'font-normal text-gray-600 dark:text-gray-400',
-        'p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all text-sm'
+          ? 'font-medium text-black dark:text-white'
+          : 'text-gray-600 dark:text-gray-400',
+        'group inline-block rounded-md px-3 py-2 text-[14px] font-normal transition-colors hover:text-black dark:hover:text-white relative'
       )}
     >
-      <span className="capsize">{text}</span>
+      <span className="capsize relative z-10">{text}</span>
+      <div 
+        className={cn(
+          "absolute inset-0 rounded-md bg-gray-100 dark:bg-gray-800 transition-all duration-300",
+          isActive 
+            ? "opacity-100 scale-100" 
+            : "opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100"
+        )}
+      />
     </NextLink>
   );
 }
@@ -107,26 +115,27 @@ export default function Container({
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setShowQuickLinks(!showQuickLinks)}
-                className="hidden md:flex items-center justify-between px-3 py-3 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all font-normal text-gray-600 dark:text-gray-400 text-sm"
+                className="group hidden md:flex items-center justify-between px-3 py-2 rounded-md text-[14px] font-normal text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors relative"
               >
-                Quick Links
+                <span className="relative z-10">Quick Links</span>
                 <svg
-                  className="w-4 h-4 ml-1"
+                  className="w-4 h-4 ml-1 relative z-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
+                <div className="absolute inset-0 rounded-md bg-gray-100 dark:bg-gray-800 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 pointer-events-none" />
               </button>
 
               <div className={`${showQuickLinks ? 'hidden md:flex' : 'hidden'} items-center gap-1`}>
-                <NavItem href="/" text="Home" />
-                <NavItem href="/about" text="About" />
-                <NavItem href="/guestbook" text="Guestbook" />
-                <NavItem href="/dashboard" text="Dashboard" />
-                <NavItem href="/blog" text="Blog" />
-                <NavItem href="/snippets" text="Snippets" />
+                <NavItem href="/" text="Home" isActive={router.asPath === '/'} />
+                <NavItem href="/about" text="About" isActive={router.asPath === '/about'} />
+                <NavItem href="/guestbook" text="Guestbook" isActive={router.asPath === '/guestbook'} />
+                <NavItem href="/dashboard" text="Dashboard" isActive={router.asPath === '/dashboard'} />
+                <NavItem href="/blog" text="Blog" isActive={router.asPath === '/blog'} />
+                <NavItem href="/snippets" text="Snippets" isActive={router.asPath === '/snippets'} />
               </div>
             </div>
           </div>
@@ -135,7 +144,7 @@ export default function Container({
             <button
               aria-label="Toggle Dark Mode"
               type="button"
-              className="w-9 h-9 bg-gray-200 rounded-lg dark:bg-gray-600 flex items-center justify-center hover:ring-2 ring-gray-300 transition-all"
+              className="group w-9 h-9 bg-gray-200 rounded-lg dark:bg-gray-600 flex items-center justify-center hover:ring-2 ring-gray-300 transition-all relative"
               onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             >
               {mounted && (
@@ -144,7 +153,7 @@ export default function Container({
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  className="w-5 h-5 text-gray-800 dark:text-gray-200"
+                  className="w-5 h-5 text-gray-800 dark:text-gray-200 relative z-10"
                 >
                   {resolvedTheme === 'dark' ? (
                     <path
@@ -163,6 +172,7 @@ export default function Container({
                   )}
                 </svg>
               )}
+              <div className="absolute inset-0 rounded-lg bg-gray-300 dark:bg-gray-700 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 pointer-events-none" />
             </button>
           </div>
         </nav>
