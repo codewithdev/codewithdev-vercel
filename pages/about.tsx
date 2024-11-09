@@ -145,6 +145,7 @@ export default function About() {
             <Link href="https://www.linkedin.com/in/idevprakaash" className="p-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
               <FaLinkedin className="w-4 h-4 text-[#0077b5]" />
             </Link>
+            <span className="text-gray-300 dark:text-gray-600">|</span>
             <Link href="https://stackoverflow.com/users/13662843/codewithdev" className="p-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
             <BsStackOverflow className='w-4 h-4 text-[#0077b5]'/>
             </Link>
