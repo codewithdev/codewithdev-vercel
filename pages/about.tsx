@@ -8,6 +8,7 @@ import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import { BsStackOverflow } from "react-icons/bs";
+import { TypeAnimation } from 'react-type-animation';
 
 import Container from 'components/Container';
 import avatar from 'public/headshot-dev.jpg';
@@ -150,7 +151,21 @@ export default function About() {
             <BsStackOverflow className='w-4 h-4 text-[#0077b5]'/>
             </Link>
           </div>
-          <p>Technical Writer and Open Source Developer</p>
+          <div className="h-12">
+            <TypeAnimation
+              sequence={[
+                'Technical Writer and Open Source Developer',
+                1000,
+                'Community Builder and Tech Speaker',
+                1000,
+                'Product Builder Enthusiast and a Teacher',
+              ]}
+              wrapper="p"
+              speed={50}
+              repeat={Infinity}
+              className="text-lg text-gray-800 dark:text-gray-200"
+            />
+          </div>
           <h3 className="mb-1">Work Experience</h3>
           <div className="relative h-[500px] md:h-[400px] w-full">
             <div className="absolute inset-0 flex items-center justify-between z-10 px-2">
