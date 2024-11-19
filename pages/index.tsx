@@ -76,9 +76,10 @@ export default function Home() {
                 Dev Prakash Sharma
               </h1>
               <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-               An Open Source developer with passion to code, write and build stuffs.</h2>
+               An Open Source developer with passion to <span className="font-mono">code</span>, write and build stuffs.</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-                Helping Developers and Businesses to ship better software documentation. Contributing to Open Source, Data Science/ML Enthusiast, and building communities.
+                Helping Developers and Businesses to ship better software documentation. Contributing to Open Source, Data Science/ML Enthusiast, and building communities
+                <span className="cursor-blink">▊</span>
               </p>
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
@@ -89,7 +90,9 @@ export default function Home() {
                 src="/headshot-dev.jpg"
                 sizes="30vw"
                 priority
-                className={`rounded-full ${resolvedTheme === 'dark' ? 'grayscale' : ''}`}
+                className={`rounded-full filter ${
+                  resolvedTheme === 'light' ? 'grayscale-0' : 'grayscale'
+                }`}
               />
             </div>
           </div>
