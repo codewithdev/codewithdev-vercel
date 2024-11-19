@@ -78,7 +78,7 @@ export default function Home() {
               <h2 className="text-gray-700 dark:text-gray-200 mb-4">
                An Open Source developer with passion to <span className="font-mono">code</span>, write and build stuffs.</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-                Helping Developers and Businesses to ship better software documentation. Contributing to Open Source, Data Science/ML Enthusiast, and building communities
+                Helping Developers and Businesses to ship better software documentation. Contributing to Open Source, Data Science/ML Enthusiast, and communities builder
                 <span className="cursor-blink">▊</span>
               </p>
             </div>
