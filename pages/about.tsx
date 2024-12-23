@@ -36,7 +36,7 @@ export default function About() {
     {
       company: "The D.E. Shaw Group",
       location: "Hyderabad, India", 
-      role: "Member, TechnicalWriting",
+      role: "Senior Technical Writer, Core Tech",
       period: "Oct 2023 - Present",
       bgColor: "dark:bg-green-900/20",
       skills: ["Technical Documentation", "API Documentation", "Process Documentation", "Knowledge Management"],
