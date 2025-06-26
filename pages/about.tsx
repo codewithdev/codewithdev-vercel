@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaGlobe, FaMailBulk } from 'react-icons/fa';
 import { FaXTwitter as FaXTwitter } from 'react-icons/fa6';
 import { LuExternalLink } from "react-icons/lu";
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
@@ -131,6 +131,10 @@ export default function About() {
         </h1>
         <div className="mb-6 prose dark:prose-dark leading-6">
           <div className="flex items-center gap-1 mb-6">
+            <Link href="mailto:idevprakaash@gmail.com" className="p-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all" aria-label="Email">
+              <FaMailBulk className="w-4 h-4 text-gray-800 dark:text-white" />
+            </Link>
+            <span className="text-gray-300 dark:text-gray-600">|</span>
             <Link href="https://twitter.com/codewithdev" className="p-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
               <FaXTwitter className="w-4 h-4 text-gray-800 dark:text-white" />
             </Link>
@@ -251,13 +255,6 @@ export default function About() {
               })}
             </div>
           </div>
-
-          <h3>Brief, 3rd Person</h3>
-          <p>
-            Dev is an experienced professional technical writer, community builder, product builder, teacher, and part time open source developer. His capabilities and interests span across domains of technical writing, public speaking, writing, and open source development. He has diverse set of open source contributions across Microsoft Docs, GitHub Docs, Circle CI, and many other open source softwares and communities.
-            As a public speaker and community builder, he delivered tech talks and hosted workshops on various open source technologies in Python, AI, and Cloud technologies.
-            His industry level experience involves working with SaaS companies, EdTech, Finance (HFTs), AI/ML and API focused companies.
-          </p>
           <h3>Long, 1st Person</h3>
           <p>
             Hey👋, I'm Dev. I'm currently working with a global HFT and investment firm as a Technical Writer. As a Technical Writer, I spend my most time in bridging the technical information gap between various groups/teams across the organization while working with engineering team, product team, and leaderships in an agile environment. 

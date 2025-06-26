@@ -76,11 +76,11 @@ export default function Home() {
                 Dev Prakash Sharma
               </h1>
               <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-               An Open Source developer with passion to <span className="font-mono">code</span>, write and build stuffs.</h2>
+               <i>A</i> technology nerd, tech docs optimizer, a thought leader, and a minimalist coder.</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-16">
-                Helping Developers and Businesses to ship better software documentation. Contributing to Open Source, Data Science/ML Enthusiast, and communities builder
-                <span className="cursor-blink">▊</span>
-              </p>
+                <h3>Hi 👋 , I'm Dev. A motorcycle rider, programming writer, caffeine-addict, and an open source developer. When I am not at work, I like revving, exploring places, and collecting memories with my motorcycle.
+                I read <i>Non</i>-fiction books, a bit nerdy, quite ambitious, and like adventure, I like chilled LIITs 🍷 more than wines. I dream about chatting in Markdown 💬
+              </h3></p>
             </div>
             <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
               <Image
