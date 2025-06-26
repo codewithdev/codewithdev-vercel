@@ -81,13 +81,13 @@ export default function Home() {
               I read <i>Non</i>-fiction books, a bit nerdy, quite ambitious, and like adventure, I like chilled LIITs 🍷 more than wines. I dream about chatting in Markdown 💬
             </h3></div>
           </div>
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[340px] sm:w-[600px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Dev Prakash Sharma"
-              height={176}
-              width={176}
+              height={700}
+              width={700}
               src="/headshot-dev.jpg"
-              sizes="30vw"
+              sizes="40vw"
               priority
               className={`rounded-full filter ${
                 resolvedTheme === 'light' ? 'grayscale-0' : 'grayscale'
@@ -191,4 +191,3 @@ export default function Home() {
     </Container>
   );
 }
-
