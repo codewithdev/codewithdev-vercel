@@ -1,4 +1,3 @@
-import prisma from 'lib/prisma';
 import Container from 'components/Container';
 import Guestbook from 'components/Guestbook';
 
@@ -6,14 +5,9 @@ interface GuestbookEntry {
   id: string;
   body: string;
   created_by: string;
+  image: string | null;
+  provider: string | null;
   updated_at: string;
-}
-
-interface GuestbookDbEntry {
-  id: number;
-  body: string;
-  created_by: string;
-  updated_at: Date;
 }
 
 export default function GuestbookPage({ fallbackData }: { fallbackData: GuestbookEntry[] }) {
@@ -36,24 +30,9 @@ export default function GuestbookPage({ fallbackData }: { fallbackData: Guestboo
   );
 }
 
-export async function getStaticProps() {
-  const entries = await prisma.portfolio.findMany({
-    orderBy: {
-      updated_at: 'desc'
-    }
-  }) as GuestbookDbEntry[];
-
-  const fallbackData = entries.map((entry: GuestbookDbEntry) => ({
-    id: entry.id.toString(),
-    body: entry.body,
-    created_by: entry.created_by.toString(),
-    updated_at: entry.updated_at.toString()
-  }));
-
+// No server-side DB fetch — page renders immediately; entries load via SWR from /api/guestbook
+export async function getServerSideProps() {
   return {
-    props: {
-      fallbackData
-    },
-    revalidate: 60
+    props: { fallbackData: [] as GuestbookEntry[] }
   };
 }

@@ -2,13 +2,14 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: [
-      'i.scdn.co', // Spotify Album Art
-      'pbs.twimg.com', // Twitter Profile Picture
-      'cdn.sanity.io'
+    remotePatterns: [
+      { protocol: 'https', hostname: 'i.scdn.co' },              // Spotify Album Art
+      { protocol: 'https', hostname: 'pbs.twimg.com' },          // Twitter/X Profile Picture
+      { protocol: 'https', hostname: 'cdn.sanity.io' },          // Sanity CMS
+      { protocol: 'https', hostname: 'avatars.githubusercontent.com' }, // GitHub Profile Picture
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },     // Google (fallback)
     ]
   },
   async headers() {
